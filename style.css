@@ -4,16 +4,34 @@
     justify-content: center;
 }
 
+.screenCurrent{
+    font-size:20px;
+}
+
+.screen{
+    text-align: right;
+    padding: 20px;
+    border:1px solid black;
+    border-radius: 5px;
+}
+
 .calculator{
     width: 400px;
-    padding: 20px;
+    padding: 30px;
+    background-color: gray;
+    border-radius: 10px;
 }
 
 .btn{
-    padding: 5px;
+    padding: 30px;
+    font-size: 20px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
 }
 
 .buttonsGrid{
+    padding-top: 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px
