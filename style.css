@@ -45,3 +45,7 @@
 .largeButton{
     grid-column: span 2;
 }
+
+.isDepressed{
+    background-color: brown;
+}
