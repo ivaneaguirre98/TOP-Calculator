@@ -31,6 +31,7 @@ keys.addEventListener('click', e => {
             //if the calculator shows a non-zero number, we want to append the clicked key to the displayed number
             else{
                 screen.textContent = displayedNum + keyContent;
+                // console.log(keyContent)
             }
             
 
@@ -42,7 +43,6 @@ keys.addEventListener('click', e => {
             action === "multiply" ||
             action === "divide"
         ){
-            console.log("operator key!");
             key.classList.add("isDepressed");
         }
 
@@ -52,15 +52,16 @@ keys.addEventListener('click', e => {
         }
 
         if(action === "clear"){
-            console.log("clear key");
+           clear();
+        //    console.log(screen.textContent);
         }
 
         if(action === "equals"){
-            console.log("equals key!");
+            // console.log("equals key!");
         }
 
         if(action === "delete"){
-            console.log("delete key!");
+            // console.log("delete key!");
         }
     }
 })
@@ -92,4 +93,8 @@ function divide(){
         console.log("Cannot divide by 0");
     }
 
+}
+
+function clear(){
+    screen.textContent = 0;
 }
