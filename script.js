@@ -16,6 +16,7 @@ keys.addEventListener('click', e => {
         let action = key.dataset.action;
         let keyContent = key.textContent;
         let displayedNum = screen.textContent;
+        let previousKeyType = calculator.dataset.previousKeyType;
 
         //removes isDepressed class from operator key after number key is hit
         Array.from(key.parentNode.children)
@@ -24,8 +25,11 @@ keys.addEventListener('click', e => {
 
         if(!action){
             //if the calculator shows 0, we want to replace the calculator's display with the clicked key
-            if(displayedNum === '0'){
-                screen.textContent = keyContent;
+            if(displayedNum === '0' || previousKeyType === "operator"){
+                screen.textContent= keyContent;
+                calculator.dataset.previousKeyType = "undefined";
+                console.log(calculator.dataset.previousKeyType);
+                
             }
 
             //if the calculator shows a non-zero number, we want to append the clicked key to the displayed number
@@ -44,6 +48,8 @@ keys.addEventListener('click', e => {
             action === "divide"
         ){
             key.classList.add("isDepressed");
+            calculator.dataset.previousKeyType = "operator"
+            console.log(calculator.dataset.previousKeyType);
         }
 
         if(action === "decimal"){
