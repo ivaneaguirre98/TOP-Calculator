@@ -71,7 +71,13 @@ keys.addEventListener('click', e => {
         }
 
         if(action === "delete"){
-            // console.log("delete key!");
+            if(displayedNum.length > 1){
+                screen.textContent = displayedNum.slice(0, displayedNum.length - 1);
+            }
+
+            else{
+                screen.textContent = "0";
+            }
         }
     }
 })
