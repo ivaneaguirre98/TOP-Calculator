@@ -65,7 +65,7 @@ keys.addEventListener('click', e => {
 
         if(action === "equals"){
             num2 = displayedNum;
-            screen.textContent = operate(num1,num2,operation)
+            operate(num1,num2,operation)
 
             
         }
@@ -83,18 +83,22 @@ function operate(number1, number2, operation){
     switch (operation){
         case "addition":
         addition(num1,num2);
+        screen.textContent = num3.toString();
         break;
 
         case "subtract":
             subtract(num1,num2);
+            screen.textContent = num3.toString();
             break;
         
         case "multiply":
             muliply(num1,num2);
+            screen.textContent = num3.toString();
             break;
 
         case "divide":
             divide(num1,num2);
+            screen.textContent = num3.toString();
             break;
 
     }
