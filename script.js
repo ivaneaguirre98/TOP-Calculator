@@ -1,6 +1,8 @@
-//define numbers used in calculations
+//define numbers used in calculation
 let num1;
 let num2;
+let num3;
+let operation;
 
 //define the calculator and calculator buttons in javascript
 let calculator = document.querySelector(".calculator");
@@ -28,8 +30,6 @@ keys.addEventListener('click', e => {
             if(displayedNum === '0' || previousKeyType === "operator"){
                 screen.textContent= keyContent;
                 calculator.dataset.previousKeyType = "undefined";
-                console.log(calculator.dataset.previousKeyType);
-                
             }
 
             //if the calculator shows a non-zero number, we want to append the clicked key to the displayed number
@@ -49,7 +49,8 @@ keys.addEventListener('click', e => {
         ){
             key.classList.add("isDepressed");
             calculator.dataset.previousKeyType = "operator"
-            console.log(calculator.dataset.previousKeyType);
+            num1 = displayedNum;
+            operation = action;            
         }
 
         if(action === "decimal"){
@@ -63,7 +64,10 @@ keys.addEventListener('click', e => {
         }
 
         if(action === "equals"){
-            // console.log("equals key!");
+            num2 = displayedNum;
+            screen.textContent = operate(num1,num2,operation)
+
+            
         }
 
         if(action === "delete"){
@@ -72,14 +76,38 @@ keys.addEventListener('click', e => {
     }
 })
 
+
+function operate(number1, number2, operation){
+    let num1 = Number(number1);
+    let num2 = Number(number2);
+    switch (operation){
+        case "addition":
+        addition(num1,num2);
+        break;
+
+        case "subtract":
+            subtract(num1,num2);
+            break;
+        
+        case "multiply":
+            muliply(num1,num2);
+            break;
+
+        case "divide":
+            divide(num1,num2);
+            break;
+
+    }
+}
+
 //addition function
-function add(){
+function addition(num1, num2){
     num3 = num1+num2;
     console.log(num3);
 }
 
 //sub function
-function subtraction(){
+function subtract(num1,num2){
     num3 = num1 - num2;
     console.log(num3);
 }
