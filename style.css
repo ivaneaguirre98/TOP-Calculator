@@ -49,3 +49,8 @@
 .isDepressed{
     background-color: brown;
 }
+
+.decimalPressed{
+    opacity: 0.5;
+    background-color: #AAAFB4;
+}

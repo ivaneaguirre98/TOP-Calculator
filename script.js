@@ -19,6 +19,7 @@ keys.addEventListener('click', e => {
         let keyContent = key.textContent;
         let displayedNum = screen.textContent;
         let previousKeyType = calculator.dataset.previousKeyType;
+        let decimalKey = document.getElementById("decimalPressed");
 
         //removes isDepressed class from operator key after number key is hit
         Array.from(key.parentNode.children)
@@ -30,6 +31,8 @@ keys.addEventListener('click', e => {
             if(displayedNum === '0' || previousKeyType === "operator"){
                 screen.textContent= keyContent;
                 calculator.dataset.previousKeyType = "undefined";
+                decimalKey.classList.remove("decimalPressed")
+
             }
 
             //if the calculator shows a non-zero number, we want to append the clicked key to the displayed number
@@ -42,24 +45,31 @@ keys.addEventListener('click', e => {
         }
 
         if(
-            action ==="addition" ||
-            action === "subtract" ||
-            action === "multiply" ||
-            action === "divide"
-        ){
+            action ==="addition" || action === "subtract" || action === "multiply" ||action === "divide"){
             key.classList.add("isDepressed");
             calculator.dataset.previousKeyType = "operator"
             num1 = displayedNum;
-            operation = action;            
+            console.log(num1)
+            operation = action;
+
         }
 
         if(action === "decimal"){
             //when user hits decimal key, then a decimal point will appear and then allow numbers to append after the decimal
-            screen.textContent = displayedNum + '.';
+
+            if(screen.textContent.includes('.')){
+                console.log("Already has a decimal");
+            } 
+            
+            else{
+                screen.textContent = displayedNum + '.';
+                decimalKey.classList.add("decimalPressed");
+            }
         }
 
         if(action === "clear"){
            clear();
+           decimalKey.classList.remove("decimalPressed")
         //    console.log(screen.textContent);
         }
 
@@ -113,18 +123,18 @@ function operate(number1, number2, operation){
 //addition function
 function addition(num1, num2){
     num3 = num1+num2;
-    console.log(num3);
+    num1 = num3;
 }
 
 //sub function
 function subtract(num1,num2){
     num3 = num1 - num2;
-    console.log(num3);
+    num1 = num3;
 }
 
 function muliply(){
     num3 = num1 * num2;
-    console.log(num3);
+    num1 = num3
 }
 
 function divide(){
