@@ -66,4 +66,10 @@ function operator(key, previousKeyType, displayedNum, action){
         num2 = displayedNum;
         console.log("Num 1 is " + num1 + "and Num 2 is " + num2);
     }
+
+    else{
+        num1 = num2;
+        num2 = "";
+        console.log("Num 1 is " + num1 + "and Num 2 is " + num2);
+    }
 }
