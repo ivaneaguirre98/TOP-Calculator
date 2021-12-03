@@ -75,8 +75,9 @@ keys.addEventListener('click', e => {
 
         if(action === "equals"){
             num2 = displayedNum;
-            operate(num1,num2,operation)
+            operate(num1,num2,operation);
 
+            
             
         }
 
