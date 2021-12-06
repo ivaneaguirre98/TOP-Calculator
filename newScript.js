@@ -36,6 +36,15 @@ function collectPress(keys){
         if(action ==="addition" || action === "subtract" || action === "multiply" ||action === "divide"){
             operator(key, previousKeyType, displayedNum, action);
         }
+
+        if(action === "equals"){
+            console.log("this is the equals button");
+        }
+
+        if(action === "clear"){
+            console.log('This is the clear button');
+            clear();
+        }
     }
 }
 
@@ -64,7 +73,7 @@ function operator(key, previousKeyType, displayedNum, action){
 
     else if(num2 === ""){
         num2 = displayedNum;
-        console.log("Num 1 is " + num1 + "and Num 2 is " + num2);
+        console.log("Num 1 is " + num1 + " and Num 2 is " + num2);
     }
 
     else{
@@ -72,4 +81,11 @@ function operator(key, previousKeyType, displayedNum, action){
         num2 = "";
         console.log("Num 1 is " + num1 + "and Num 2 is " + num2);
     }
+}
+
+function clear(){
+    screen.textContent = 0;
+    num1 = "";
+    num2 = "";
+    // console.log(num1,num2);
 }
