@@ -45,6 +45,7 @@ function appendNum(button){
     let number = button.target.textContent;
     if(currentScreen.textContent === "0" || previousKeyType === "operator"){
         currentScreen.textContent = number;
+        previousKeyType = "undefined";
     }
 
     else{
@@ -58,6 +59,7 @@ function setOperation(operation){
     } 
     currentOperator = operation.target.textContent;
     num1 = currentScreen.textContent;
+    previousKeyType = "operator";
     console.log(num1,currentOperator);
 }
 
