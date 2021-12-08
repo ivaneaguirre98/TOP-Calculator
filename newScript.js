@@ -45,10 +45,14 @@ function clearScreen(){
 
 //each time you press a number button, it will append a number to it to create your number
 function appendNum(button){
+    let key = button.target;
+    Array.from(key.parentNode.children)
+            .forEach(k => k.classList.remove("isDepressed"));
     let number = button.target.textContent;
     if(currentScreen.textContent === "0" || previousKeyType === "operator"){
         currentScreen.textContent = number;
         previousKeyType = "undefined";
+
     }
 
     else{
@@ -57,6 +61,8 @@ function appendNum(button){
 }
 
 function setOperation(operation){
+    let key = operation.target;
+    key.classList.add("isDepressed");
     if(currentOperator !== null){
         evaluate();
     } 
@@ -75,7 +81,6 @@ function evaluate(){
 function operate(a,b,operator){
     a = Number(a);
     b = Number(b);
-    console.log(a,b,operator)
 
     switch (operator){
         case "+":

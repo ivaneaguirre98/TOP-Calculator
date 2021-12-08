@@ -6,7 +6,7 @@
 
 .screen{
     grid-column: 1 / -1;
-    background-color:white;
+    background-color:#ccc5b9;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -15,14 +15,9 @@
     word-wrap: break-word;
     word-break: break-all;
 }
-.screen .previousScreen{
-    color: gray;
-    font-size: 1 rem;
-    padding-top: 5px;
-}
 
 .screen .currentScreen{
-    color: gray;
+    color: black;
     font-size: 2rem;
     padding-top: 20px;
 }
@@ -30,7 +25,7 @@
 .calculator{
     width: 400px;
     padding: 30px;
-    background-color: gray;
+    background-color: #252422;
     border-radius: 10px;
 }
 
@@ -38,12 +33,12 @@
     padding: 30px;
     font-size: 20px;
     border: none;
-    background-color: blueviolet;
+    background-color: #eb5e28;
     color: white;
 }
 
 .btn:hover{
-    background-color: aqua;
+    background-color: #ccc5b9;
 }
 
 
@@ -59,7 +54,7 @@
 }
 
 .isDepressed{
-    background-color: brown;
+    background-color: #ccc5b9;
 }
 
 .decimalPressed{
