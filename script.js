@@ -20,6 +20,7 @@ keys.addEventListener('click', e => {
         let displayedNum = screen.textContent;
         let previousKeyType = calculator.dataset.previousKeyType;
         let decimalKey = document.getElementById("decimalPressed");
+        console.log(calculator.dataset.previousKeyType);
 
         //removes isDepressed class from operator key after number key is hit
         Array.from(key.parentNode.children)
@@ -31,7 +32,7 @@ keys.addEventListener('click', e => {
             if(displayedNum === '0' || previousKeyType === "operator"){
                 screen.textContent= keyContent;
                 calculator.dataset.previousKeyType = "undefined";
-                decimalKey.classList.remove("decimalPressed")
+                // decimalKey.classList.remove("decimalPressed")
 
             }
 

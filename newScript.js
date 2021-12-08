@@ -1,91 +1,66 @@
-//define the numbers and operations to be used in our calculations
-let num1="";
-let num2="";
-let num3;
-let operation;
+//setting our variables for the calculations
+let num1 = "";
+let num2 = "";
+let num3 = "";
+let currentOperator = null;
+let previousKeyType = "";
 
-//define the calculator and calculator in JS
-let calculator = document.querySelector(".calculator");
-let keys = calculator.querySelector(".buttonsGrid");
+//setting all number buttons to a single variable
+let numberButtons = document.querySelectorAll('[data-number]');
+//setting all operator buttons to a single variable
+let operatorButtons = document.querySelectorAll('[data-operator');
 
-//define the calculator screen
-let screen = document.querySelector(".currentScreen");
+//setting equals, clear and delete button to a variable
+let equalButton = document.querySelector('[data-equals');
+let deleteButton = document.querySelector('[data-delete');
+let clearButton = document.querySelector('[data-clear]');
 
-//eventListner for when a key is pressed
-keys.addEventListener('click', collectPress);
+//setting our screen variable
+let currentScreen = document.querySelector('[data-currentScreen]');
 
-//function that sets up our calculation
-function collectPress(keys){
-    if(keys.target.matches("button")){
-        let key = keys.target;
-        let action = key.dataset.action;
-        // console.log(action);
-        let keyContent = key.textContent;
-        // console.log(keyContent);
-        let displayedNum = screen.textContent;
-        let previousKeyType = calculator.dataset.previousKeyType;
+//add event listeners for each number button and it calls appendNum function
+numberButtons.forEach((button) =>{
+    button.addEventListener("click", appendNum);
+})
 
-        Array.from(key.parentNode.children)
-            .forEach(k => k.classList.remove("isDepressed"));
+//add event listeners for our operator buttons and it calls setOperation function
+operatorButtons.forEach((operation) =>{
+    operation.addEventListener('click', setOperation);
+})
 
-        // if there is no action assigned to the button, it is a number key
-        if(!action){
-            createNum(displayedNum, previousKeyType, keyContent, key);
-        }
+//adding event listener to our clear button and it calls clear screen function
+clearButton.addEventListener('click', clearScreen);
 
-        if(action ==="addition" || action === "subtract" || action === "multiply" ||action === "divide"){
-            operator(key, previousKeyType, displayedNum, action);
-        }
-
-        if(action === "equals"){
-            console.log("this is the equals button");
-        }
-
-        if(action === "clear"){
-            console.log('This is the clear button');
-            clear();
-        }
-    }
-}
-
-//allows us to populate the screen with the number of keys we hit
-function createNum(displayedNum, previousKeyType, keyContent, key){
-    //if the calculator shows 0, we want to replace the calculator displayedNum with the clicked key
-    if(displayedNum === '0' || previousKeyType ==='operator'){
-        key.classList.remove("isDepressed");
-        screen.textContent = keyContent;
-        calculator.dataset.previousKeyType = "undefined";
-    }
-
-    else{
-        screen.textContent = displayedNum + keyContent;
-    }
-}
-
-function operator(key, previousKeyType, displayedNum, action){
-    key.classList.add("isDepressed");
-    calculator.dataset.previousKeyType = "operator"
-
-    if(num1 === ""){
-        num1 = displayedNum;
-        console.log("Num 1 is " + num1);
-    }
-
-    else if(num2 === ""){
-        num2 = displayedNum;
-        console.log("Num 1 is " + num1 + " and Num 2 is " + num2);
-    }
-
-    else{
-        num1 = num2;
-        num2 = "";
-        console.log("Num 1 is " + num1 + "and Num 2 is " + num2);
-    }
-}
-
-function clear(){
-    screen.textContent = 0;
+//sets the screen back to zero and sets up a clear calculator
+function clearScreen(){
+    currentScreen.textContent = "0";
     num1 = "";
     num2 = "";
-    // console.log(num1,num2);
+    num3 = "";
+    currentOperator = null;
+}
+
+//each time you press a number button, it will append a number to it to create your number
+function appendNum(button){
+    let number = button.target.textContent;
+    if(currentScreen.textContent === "0" || previousKeyType === "operator"){
+        currentScreen.textContent = number;
+    }
+
+    else{
+        currentScreen.textContent += number
+    }
+}
+
+function setOperation(operation){
+    if(currentOperator !== null){
+        evaluate();
+    } 
+    currentOperator = operation.target.textContent;
+    num1 = currentScreen.textContent;
+    console.log(num1,currentOperator);
+}
+
+function evaluate(){
+    console.log("calling evaulate function");
 }
