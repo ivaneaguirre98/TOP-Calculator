@@ -31,6 +31,9 @@ operatorButtons.forEach((operation) =>{
 //adding event listener to our clear button and it calls clear screen function
 clearButton.addEventListener('click', clearScreen);
 
+//adding event listener to our equals button to evaluate our function
+equalButton.addEventListener('click', evaluate);
+
 //sets the screen back to zero and sets up a clear calculator
 function clearScreen(){
     currentScreen.textContent = "0";
@@ -60,9 +63,56 @@ function setOperation(operation){
     currentOperator = operation.target.textContent;
     num1 = currentScreen.textContent;
     previousKeyType = "operator";
-    console.log(num1,currentOperator);
 }
 
 function evaluate(){
-    console.log("calling evaulate function");
+    num2 = currentScreen.textContent;
+    currentScreen.textContent = Math.round(
+        operate(num1,num2,currentOperator) * 1000) / 1000;
+    currentOperator = null;
+}
+
+function operate(a,b,operator){
+    a = Number(a);
+    b = Number(b);
+    console.log(a,b,operator)
+
+    switch (operator){
+        case "+":
+            return addition(a,b);
+
+        case "-":
+            return subtract(a,b);
+            
+        case "x":
+            return muliply(a,b);
+            
+        case "/":
+            return divide(a,b);
+    }
+}
+
+//addition function
+function addition(a, b){
+    return a+b;
+}
+
+//sub function
+function subtract(a,b){
+    return a-b;
+}
+
+function muliply(a,b){
+    return a * b;
+}
+
+function divide(a,b){
+    if(b != 0){
+        return a / b;
+    }
+
+    else{
+        return "ERROR";
+    }
+
 }
